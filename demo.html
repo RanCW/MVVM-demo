@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据劫持</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
+</head>
+<body>
+<div id="app">
+    <p>{{test.name}}</p>
+    <p>{{test.age}}</p>
+    <div>
+        这里是双向数据绑定
+        <div>
+            {{modelTest}}
+        </div>
+    </div>
+    <div>
+        <input type="text" v-model="modelTest">
+    </div>
+    <div>{{testHello}}</div>
+</div>
+
+<script src="mode.js"></script>
+<script src="mvvm.js"></script>
+<script>
+    /**
+     * 笔记
+     * 1.什么叫数据劫持？
+     *    就是利用Object.defineProperty来定义所有的属性
+     * */
+    let app=new Mvvm({
+        el:'#app',
+        data:{
+            test:{
+                name:'这里是name',
+                age:'这里是age'
+            },
+            modelTest:'双向数据绑定数据测试'
+        },
+        computed:{//可以缓存，只是把数据挂载到VM上
+            testHello(){
+                return this.modelTest;
+            }
+        }
+    })
+</script>
+</body>
+</html>

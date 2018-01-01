@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于object.defineProperty</title>
+</head>
+<body>
+
+<script>/**
+ 笔记：
+    在有get，set的情况是不能有writable与value的
+ */
+    let obj={};
+    Object.defineProperty(obj,'name',{
+        configurable:true,//配置，默认false
+        enumerable:true,//是否可枚举,默认false
+        get(){//获取object的names的值的时候会调用get方法
+            return 'test'
+        },
+        set(val){//给obj.name赋值的时候调用set方法
+            console.log(val)
+        }
+    });
+    console.log(obj)
+//    for(let key in obj){
+//        console.log(key)
+//        console.log(obj.key)
+//    }
+</script>
+</body>
+</html>
